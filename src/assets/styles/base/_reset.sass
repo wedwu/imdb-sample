@@ -1,0 +1,56 @@
+// _reset.sass
+
+@import '../theme/_colors'
+
+*,
+*:after,
+*:before
+  box-sizing: border-box
+  line-height: 150%
+
+body,
+html
+  position: relative
+  height: 100%
+  padding: 0
+  margin: 0
+  font-family: 'Open Sans'
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  display: block
+  padding: 0
+  margin: 0
+
+li,
+ol,
+ul
+  display: block
+  padding: 0
+  margin: 0
+
+#wrapper,
+html
+  color: $greyColor
+  height: 100%
+  position: relative
+
+  &.lightBackground
+    background-color: $greyAlt163Color
+
+  &.darkBackground
+    background-color: $greyAlt1Color
+
+.container
+  width: 80%
+  margin: 0 auto
+
+a,
+a:active,
+a:link,
+a:visited
+  text-decoration: none

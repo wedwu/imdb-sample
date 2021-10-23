@@ -1,0 +1,266 @@
+// _icons.sass
+
+@import './_colors'
+@import './_fonts'
+
+.icon
+  &::before
+    display: inline-block
+    font-size: 20px
+    position: relative
+    vertical-align: middle
+    width: 20px
+    line-height: 20px
+    font-weight: normal
+    font-family: 'Kingswell'
+    color: inherit
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: subpixel-antialiased
+    text-align: center
+    margin-left: -5px
+    margin-left: inherit
+
+  &.global-nav::before
+    background: url('./ic_hd_menu_global_nav_white.svg') no-repeat center
+    background-size: 18px 18px
+    content: ' '
+    display: block
+    width: 100%
+    height: 100%
+
+  &.alert-icon::before
+    content: '\e901'
+
+  &.arrow-closed::before
+    content: '\e902'
+    top: -4px
+
+  &.arrow-opened::before
+    content: '\e903'
+    top: -4px
+
+  &.calendar-month::before
+    content: '\e908'
+
+  &.prev::before
+    content: '\e91b'
+
+  &.next::before
+    content: '\e913'
+
+  &.next-thin::before
+    content: '\e91a'
+
+  &.close::before
+    content: '\e90a'
+
+  &.close-circle::before
+    content: '\e919'
+
+  &.checkmark::before
+    content: '\e909'
+
+  &.edit::before
+    content: '\e90b'
+
+  &.filter::before
+    content: '\e90c'
+
+  &.hd-global-info::before
+    content: '\e90d'
+
+  &.hd-home::before
+    content: '\e90e'
+
+  &.hd-refresh::before
+    content: '\e910'
+
+  &.info::before
+    content: '\e911'
+
+  &.minus::before
+    content: '\e912'
+
+  &.next3::before
+    content: '\e913'
+
+  &.search::before
+    content: '\e914'
+
+  &.time::before
+    content: '\e915'
+
+  &.go-back-to::before
+    content: '\e916'
+
+  &.add::before
+    content: '\e917'
+
+  &.prev2::before
+    content: '\e918'
+
+  &.next2::before
+    content: '\e91a'
+
+  &.close2::before
+    background: url('svg/kingswell/ic_close.svg') no-repeat center
+
+  &.close-circle::before
+    content: '\e919'
+
+  &.no-results-found::before
+    background: url('svg/kingswell_Illustrations/art_noresultsfound.svg') no-repeat center
+    background-size: 100%
+    content: ' '
+    display: block
+    width: 100%
+    height: 100%
+
+  &.timeout::before
+    background: url('svg/kingswell_Illustrations/art_timeoutwarning.svg') no-repeat center
+    content: ' '
+    display: block
+    width: 100%
+    height: 100%
+
+  &.no-access::before
+    background: url('svg/kingswell_Illustrations/art_noaccess.svg') no-repeat center
+    content: ' '
+    display: block
+    width: 100%
+    height: 100%
+
+  &.no-connection::before
+    background: url('svg/kingswell_Illustrations/art_noconnection.svg') no-repeat center
+    content: ' '
+    display: block
+    width: 100%
+    height: 100%
+
+  &.systemerror-phone::before
+    background: url('svg/kingswell_Illustrations/art_systemerror_phone.svg') no-repeat center
+    content: ' '
+    display: block
+    background-size: 100%
+    width: 100%
+    height: 100%
+
+  &.systemerror-tablet-portrait::before
+    background: url('svg/kingswell_Illustrations/art_systemerror_tablet-portrait.svg') no-repeat center
+    content: ' '
+    display: block
+    width: 100%
+    height: 100%
+
+  &.systemerror-tablet-landscape::before
+    background: url('svg/kingswell_Illustrations/art_systemerror_tablet-landscape.svg') no-repeat center
+    content: ' '
+    display: block
+    width: 100%
+    height: 100%
+
+  &.systemerror-desktop::before
+    background: url('svg/kingswell_Illustrations/art_systemerror_desktop.svg') no-repeat center
+    content: ' '
+    display: block
+    width: 100%
+    height: 100%
+
+.icon-gss
+  &::before
+    display: inline-flex
+    text-align: center
+    vertical-align: middle
+    font-size: 18px
+    position: relative
+    font-weight: normal
+    font-family: 'GSS'
+    color: inherit
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: subpixel-antialiased
+
+  &.touch-to-search::before
+    content: '\e900'
+
+  &.barcode::before
+    content: '\e901'
+
+  &.annual-pass::before
+    content: '\e902'
+
+  &.cast-member::before
+    content: '\e903'
+
+  &.dining::before
+    content: '\e904'
+
+  &.guest-pass::before
+    content: '\e905'
+
+  &.magic-band::before
+    content: '\e906'
+
+  &.mep::before
+    content: '\e907'
+
+  &.resort::before
+    content: '\e908'
+
+  &.tickets::before
+    content: '\e909'
+
+  &.partial-fp::before
+    content: '\e90a'
+
+  &.redeemed-fp::before
+    content: '\e90b'
+
+  &.expired-fp::before
+    content: '\e90c'
+
+  &.cancelled-fp::before
+    content: '\e90d'
+
+  &.multi-fp::before
+    content: '\e90e'
+
+  &.non-standard-fp::before
+    content: '\e90f'
+
+  &.non-dining::before
+    content: '\e910'
+
+  &.reminder::before
+    content: '\e911'
+
+  &.fastpass::before
+    content: '\e912'
+
+  &.personal-event::before
+    content: '\e913'
+
+@mixin icon($size)
+  height: $size
+  line-height: $size
+  font-size: $size
+  &::before
+    line-height: $size
+    font-size: $size
+
+.kw-icon-x-small
+  @include icon('18px')
+
+.kw-icon-small-20
+  @include icon('20px')
+
+.kw-icon-small
+  @include icon('28px')
+
+.kw-icon-medium
+  @include icon('44px')
+
+.kw-icon-large
+  @include icon('54px')
+
+.success-icon
+  color: $greenColor
