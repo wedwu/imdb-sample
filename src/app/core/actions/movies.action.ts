@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store'
-import { MoviesModel } from '@models/movies.model'
+import { MoviesModel } from '../models/movies.model'
 
 export const retrievedMoviesList = createAction(
   '[Movies API] Movies API Success',

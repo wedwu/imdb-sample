@@ -1,4 +1,4 @@
-import { MoviesModel } from '@models/movies.model'
+import { MoviesModel } from '../models/movies.model'
 
 export interface AppState {
   movies: MoviesModel[]
