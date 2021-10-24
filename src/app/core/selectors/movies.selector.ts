@@ -13,3 +13,8 @@ export const albumCollectionByAlbumId = (albumId: number) => createSelector(
     moviesSelector,
     (movies:MoviesModel[]) => albumId == -1 ? movies : movies.filter(_ => _.albumId == albumId)
 )
+
+export const albumCollection = (albumId: number) => createSelector(
+    moviesSelector,
+    (movies:MoviesModel[]) => movies
+)

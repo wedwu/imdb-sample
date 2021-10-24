@@ -8,7 +8,7 @@
         (ngModelChange)="albumChange($event)">
         <option role="option" value="-1">Select Movies Categroy</option>
         <option role="option" *ngFor="let id of albumIds$ | async" [value]="id">
-          {{ id }}
+          {{ id }} - {{ albumIds$ }}
         </option>
       </select>
     </article>

@@ -4,7 +4,7 @@ import { PAGE_IN_ANIMATION, PAGE_OUT_ANIMATION } from '../shared/shared_route_an
 import { Store, select } from '@ngrx/store'
 // import { MoviesService } from '../core/services/movies.service'
 import { /*retrievedMoviesList,*/ invokeMoviesAPI } from '../core/actions/movies.action'
-import { uniqueAlbumIds, albumCollectionByAlbumId } from '../core/selectors/movies.selector'
+import { uniqueAlbumIds, albumCollection, albumCollectionByAlbumId } from '../core/selectors/movies.selector'
 import { MoviesModel } from '../core/models/movies.model'
 
 /**

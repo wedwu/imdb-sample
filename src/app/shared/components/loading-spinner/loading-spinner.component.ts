@@ -1,11 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit, HostBinding } from '@angular/core'
-import { getLCP, getFID, getCLS } from 'web-vitals'
-import { Router, RouterOutlet } from '@angular/router'
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core'
 import { trigger, transition, animate, style, query, group, animateChild } from '@angular/animations'
 
-import PHOTOS from '../../../shared/misc/photos'
-
-const MIN_PAGE_TIMEOUT = 2000
 const ELASTIC_BEZIER = 'cubic-bezier(.26,1.96,.58,.61)'
 
 @Component({
@@ -38,11 +33,13 @@ const ELASTIC_BEZIER = 'cubic-bezier(.26,1.96,.58,.61)'
             style({ transform: 'translateX(-100px)', opacity:0 }),
             animate('300ms ease-out', style({ opacity:1, transform: 'none' })),
             animateChild()
-          ]),
+          ],
+          { optional: true })
         ])
       ]),
       transition('* => advanced, * => routing, * => basics, * => programmatic, * => resources', [
-        query(':enter', animateChild())
+        query(':enter', animateChild(),
+        { optional: true })
       ]),
       transition('* => *', [])
     ])

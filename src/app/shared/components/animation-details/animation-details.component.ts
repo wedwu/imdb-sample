@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
-import { AnimationCountService } from '../../../core/services/animation-count/animation-count.service'
-import { AnimationItem } from '../../../core/models/spinner.model'
+import { AnimationCountService } from '@core/services/animation-count/animation-count.service'
+import { AnimationItem } from '@core/models/spinner.model'
 
 /**
  * todo:

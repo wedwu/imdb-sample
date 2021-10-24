@@ -4,25 +4,31 @@ import { RouterModule } from '@angular/router'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
+import { ServiceWorkerModule } from '@angular/service-worker'
 // import { MatNativeDateModule } from '@angular/material/core'
 import { BrowserModule } from '@angular/platform-browser'
-// import { ImportMaterialModule } from './material-module'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreModule } from '@ngrx/store'
+
+// import { ImportMaterialModule } from './material-module'
 // import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
-import { ROUTES } from './routes'
 // import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core'
+
+import { ROUTES } from './routes'
+// Pages/Effects
 import { AboutComponent } from './about/about.component'
-import { AnimationDetailsComponent } from './shared/components/animation-details/animation-details.component'
 import { AppComponent } from './app.component'
 import { environment } from '../environments/environment'
 import { HomeComponent } from './home/home.component'
-import { NavigationComponent } from './shared/components/navigation/navigation.component'
 import { MoviesComponent } from './movies/movies.component'
 import { MoviesEffect } from './movies/movies.effect'
-import { moviesReducer } from './core/reducers/movies.reducer'
-import { MoviesService } from './core/services/movies/movies.service'
-import { ServiceWorkerModule } from '@angular/service-worker'
+// @Shared
+import { AnimationDetailsComponent } from '@shared/components/animation-details/animation-details.component'
+import { NavigationComponent } from '@shared/components/navigation/navigation.component'
+// @Reducer
+import { moviesReducer } from '@reducers/movies.reducer'
+// @Services
+import { MoviesService } from '@services/movies/movies.service'
 
 @NgModule({
   declarations: [
