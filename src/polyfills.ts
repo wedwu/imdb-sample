@@ -53,44 +53,34 @@
  *  (window as any).__Zone_enable_cross_context_check = true;
  *
  */
- (window as any).globalThis = window;
 
- /***************************************************************************************************
-  * Zone JS is required by default for Angular itself.
-  */
-  import 'zone.js/dist/zone';  // Included with Angular CLI.
-  // import 'zone.js/dist/long-stack-trace-zone';
-
- /***************************************************************************************************
-  * APPLICATION IMPORTS
-  */
-
- import {Logger, Level} from 'ts-debugger';
- import {environment} from './environments/environment';
-
- declare let log: Logger;
- declare let window: any;
-
- if (environment.production) {
-     // Production
-     window.log = new Logger(Level.INFO);
- } else {
-     // Development
-     window.log = new Logger();
-     Error["stackTraceLimit"] = Infinity;
- }
-
- log.debug(
-     `Level debug: ${log["levelMin"]}`,
-     `Is Production? = ${environment.production}`
-     //, `THEME = ${THEME}`
- )();
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js';  // Included with Angular CLI.
+import 'zone.js'  // Included with Angular CLI.
 
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+ // import {Logger, Level} from 'ts-debugger'
+ // import {environment} from './environments/environment'
+
+ // declare let log: Logger
+ // declare let window: any
+
+ // if (environment.production) {
+     // Production
+     // window.log = new Logger(Level.INFO)
+ // } else {
+     // Development
+     // window.log = new Logger()
+     // Error["stackTraceLimit"] = Infinity
+ // }
+
+ // log.debug(
+ //     `Level debug: ${log["levelMin"]}`,
+ //     `Is Production? = ${environment.production}`
+ //     //, `THEME = ${THEME}`
+ // )()

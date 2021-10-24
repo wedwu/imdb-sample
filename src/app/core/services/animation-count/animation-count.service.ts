@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core'
+import { AnimationItem } from '../../models/spinner.model'
 
 /**
  * todo:
@@ -10,11 +11,6 @@ import { Injectable } from '@angular/core'
  *
  **/
 
-export interface AnimationItem {
-  title: string
-  fileName: string
-}
-
 @Injectable()
 export class AnimationCountService {
   private _items: AnimationItem[] = []
@@ -23,9 +19,8 @@ export class AnimationCountService {
     return this._items.length
   }
 
-  specifyAnimations(animations: AnimationItem[]) {
+  specifyAnimations = (animations: AnimationItem[]) =>
     this._items = Array.from(animations)
-  }
 
   get items() {
     return this._items

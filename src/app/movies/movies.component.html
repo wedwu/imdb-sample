@@ -1,0 +1,24 @@
+<article role="article" class="container">
+    <article role="form" class="row justify-content-center">
+      <select
+        class="form-select form-select-md mt-3 w-50"
+        role="select"
+        aria-label=".form-select-lg example"
+        [ngModel]="selectedAlbumId"
+        (ngModelChange)="albumChange($event)">
+        <option role="option" value="-1">Select Movies Categroy</option>
+        <option role="option" *ngFor="let id of albumIds$ | async" [value]="id">
+          {{ id }}
+        </option>
+      </select>
+    </article>
+    <article role="article" class="row">
+      <article role="grid" *ngFor="let item of allMovies$ | async" class="grid card m-3">
+        <img role="img" src="{{item.thumbnailUrl}}" class="card-img-top movieImage" alt="Title {{item.title}} & Album Categroy Id {{item.albumId}}">
+        <article role="gridcell" class="card-body">
+          <h5 role="heading" class="card-title">{{item.title}}</h5>
+          <p role="textbox">Album Categroy Id {{item.albumId}}</p>
+        </article>
+      </article>
+    </article>
+  </article>

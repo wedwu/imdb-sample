@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
-import { AnimationItem, AnimationCountService } from '@services/animation-count/animation-count.service'
+import { AnimationCountService } from '../../../core/services/animation-count/animation-count.service'
+import { AnimationItem } from '../../../core/models/spinner.model'
 
 /**
  * todo:
@@ -24,6 +25,6 @@ export class AnimationDetailsComponent {
   }
 
   loadAnimationDetails(item: AnimationItem) {
-    return 
+    return
   }
 }

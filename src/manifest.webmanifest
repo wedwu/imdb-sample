@@ -1,6 +1,6 @@
 {
-  "name": "imdb-sample-v1",
-  "short_name": "imdb-sample-v1",
+  "name": "imdb-version-1",
+  "short_name": "imdb-version-1",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

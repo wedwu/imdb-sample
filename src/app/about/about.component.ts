@@ -1,39 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { MoviesService } from '../core/services/movies/movies.service';
-import { retrievedMovieList, invokeGalleryAPI } from '../core/actions/movie.action';
-import {
-  uniqueAlbumIds,
-  albumCollectionByAlbumId,
-} from '../core/selector/movie.selector';
-import { MoviesModel } from '../core/models/movies.model';
+import { ElementRef, OnInit, Renderer2, Component, HostBinding } from '@angular/core'
+import { trigger, transition, useAnimation } from '@angular/animations'
+import { PAGE_IN_ANIMATION, PAGE_OUT_ANIMATION } from '../shared/shared_route_animations'
+
+/**
+ * todo:
+ * todo:
+ * todo:
+ * todo:
+ * todo:
+ * todo:
+ *
+ **/
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.sass']
+  styleUrls: ['./about.component.sass'],
+  animations: [
+    trigger('pageAnimations', [
+      transition(':enter', useAnimation(PAGE_IN_ANIMATION)),
+      transition(':leave', useAnimation(PAGE_OUT_ANIMATION))
+    ]),
+  ]
 })
 export class AboutComponent implements OnInit {
-  selectedAlbumId = -1;
-  albumIds$ = this.store.pipe(select(uniqueAlbumIds));
-  allMovies$ = this.store.pipe(
-    select(albumCollectionByAlbumId(this.selectedAlbumId))
-  );
-  constructor(
-    private store: Store<{ movies: MoviesModel[] }>,
-    private movieService: MoviesService
-  ) {}
-
-  ngOnInit(): void {
-    this.store.dispatch(invokeGalleryAPI());
-    // this.movieService.loadMovies().subscribe((movies) => {
-    //   console.log(movies);
-    //   this.store.dispatch(
-    //     retrievedMovieList({ allMovies: movies as MoviesModel[] })
-    //   );
-    // });
-  }
-  albumChange(event:number) {
-    this.allMovies$ = this.store.pipe(select(albumCollectionByAlbumId(event)));
-  }
+  @HostBinding('@pageAnimations') animatePage = true
+  
+  constructor() {}
+  ngOnInit(): void {}
 }

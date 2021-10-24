@@ -1,66 +1,7 @@
-<nav role="navigation" [class]="darkModeSelected === 'dark' ? 'dark main-navigation' : 'light main-navigation'" mat-tab-nav-bar [backgroundColor]="background">
-  <!-- LOGO -->
-  <a role="link" class="logoIcon" (click)="sidenav.toggle()">
-    <img
-      role="img"
-      width="40"
-      height="40"
-      alt="Angular Logo"
-      src="/assets/icons/icon-80x80.png"
-    />
-  </a>
-  <!-- LINKS -->
-  <a mat-tab-link
-    role="link"
-    *ngFor="let link of links"
-    routerLink="/{{link === 'IMDB Admin' ? 'about' : link === 'Home' ? '/' : link.toLowerCase()}}"
-    (click)="activeLink = link"
-    [active]="activeLink == link"
-    class="hideOnPhones">
-    {{link}}
-  </a>
-  <!-- TODO: -->
-  <a role="link" class="logout" (click)="onLogOut()">
-    <!-- (click)="sidenav.toggle()" -->
-    <span aria-label="Log In and Log Out" value="Summary" class="logOutItem user-circle textDecorationNone editLink first single logOutButton error logoutCircle">
-      CW {{userInitials}}
-    </span>
-  </a>
-  <div role="contentinfo" class="confirmMessage item logOutMessage">
-    <strong class="btnLbl buttonLabel alert hide">
-      {{logOutText}}
-    </strong>
-    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-      <mat-button-toggle role="button" aria-label="Yes to Log Out" class="darkHover roboFont" id="Yes" (click)="onConfirmLogOut($event)" value="Yes">Yes</mat-button-toggle>
-      <mat-button-toggle role="button" aria-label="No to Stay Logged in" class="delete roboFont" id="No" (click)="onConfirmLogOut($event)" value="No">No</mat-button-toggle>
-    </mat-button-toggle-group>
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a role="navigation" href="/" class="navbar-brand text-white"> Home </a>
+    <a role="navigation" href="/about" class="navbar-brand text-white"> About </a>
+    <a role="navigation" href="/movies" class="navbar-brand text-white"> Movies </a>
   </div>
 </nav>
-
-<!-- SIDE NAVIGATION -->
-<mat-sidenav-container role="toolbar" class="matSideNavContainer">
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a mat-list-item
-        role="link"
-        *ngFor="let link of links"
-        routerLink="/{{link === 'IMDB Admin' ? 'about' : link.toLowerCase()}}"
-        (click)="activeLink = link"
-      > {{link}} </a>
-      <mat-button-toggle-group (click)=getDarkMode($event) name="fontStyle" aria-label="Font Style">
-        <mat-button-toggle role="button" id="light" value="light">LIGHT</mat-button-toggle>
-        <mat-button-toggle role="button" id="dark" value="dark">DARK</mat-button-toggle>
-      </mat-button-toggle-group>
-      <button
-        (click)="sidenav.toggle()"
-        mat-list-item
-        role="button"
-        aria-label="Do You Want to Close the Sidebar Navigation"
-        class="buttonNoBorder">
-        <i class="material-icons">cancel</i>
-        <strong>Close</strong>
-      </button>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content></mat-sidenav-content>
-</mat-sidenav-container>

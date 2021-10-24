@@ -1,0 +1,4 @@
+<div role="spinbutton" class="loading-stage" @loadingAnimation *ngIf="!ready; else loaded;" >
+  <div role="progressbar" class="loading-spinner"></div>
+  <div role="textbox" class="text"> loading ({{ percentage }}%)</div>
+</div>
