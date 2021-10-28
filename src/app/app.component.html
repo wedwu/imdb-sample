@@ -1,11 +1,8 @@
 <header>
-  <app-navigation role="navigation" aaria-label="Main Navigation"></app-navigation>
+  <app-navigation role="navigation" aria-label="Main Navigation"></app-navigation>
 </header>
-
-
 <progress role="progress" class="loading-stage" @loadingAnimation *ngIf="!ready; else loaded;">
   <span role="progressbar" class="loading-spinner"></span>
-  <span role="text" class="text"> loading ({{ percentage }}%)</span>
 </progress>
 <ng-template #loaded>
   <main class="content" role="main">

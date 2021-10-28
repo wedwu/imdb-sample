@@ -1,6 +1,5 @@
 import { OnInit, Component, HostBinding } from '@angular/core'
 import { trigger, transition, useAnimation } from '@angular/animations'
-import { PAGE_IN_ANIMATION, PAGE_OUT_ANIMATION } from '@shared/shared_route_animations'
 import { Store, select } from '@ngrx/store'
 import { MoviesService } from '@core/services/movies/movies.service'
 import { retrievedMoviesList } from '@core/actions/movies.action'
@@ -24,16 +23,9 @@ declare var $: any
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.sass'],
-  animations: [
-    trigger('pageAnimations', [
-      transition(':enter', useAnimation(PAGE_IN_ANIMATION)),
-      transition(':leave', useAnimation(PAGE_OUT_ANIMATION))
-    ]),
-  ]
+  animations: []
 })
 export class MoviesComponent implements OnInit {
-  @HostBinding('@pageAnimations') animatePage = true
-
   selectedYear = ''
   IMDBIDs$ = this.store.pipe(select(uniqueIMDBIDs))
   allMovies$ = this.store.pipe(
