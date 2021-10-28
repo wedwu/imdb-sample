@@ -5,15 +5,9 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { ServiceWorkerModule } from '@angular/service-worker'
-// import { MatNativeDateModule } from '@angular/material/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreModule } from '@ngrx/store'
-
-// import { ImportMaterialModule } from './material-module'
-// import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
-// import { MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core'
-
 import { ROUTES } from './routes'
 // Pages/Effects
 import { AboutComponent } from './about/about.component'
@@ -22,13 +16,13 @@ import { environment } from '../environments/environment'
 import { HomeComponent } from './home/home.component'
 import { MoviesComponent } from './movies/movies.component'
 import { MoviesEffect } from './movies/movies.effect'
+// @Services
+import { MoviesService } from '@services/movies/movies.service'
 // @Shared
 import { AnimationDetailsComponent } from '@shared/components/animation-details/animation-details.component'
 import { NavigationComponent } from '@shared/components/navigation/navigation.component'
 // @Reducer
 import { moviesReducer } from '@reducers/movies.reducer'
-// @Services
-import { MoviesService } from '@services/movies/movies.service'
 
 @NgModule({
   declarations: [
@@ -53,15 +47,7 @@ import { MoviesService } from '@services/movies/movies.service'
     StoreModule.forRoot({ movies: moviesReducer })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [
-    MoviesService,
-    // { provide: MAT_RIPPLE_GLOBAL_OPTIONS,
-    //   useValue: { float: 'always' }
-    // },
-    // { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-    //   useValue: 'outline'
-    // }
-  ],
+  providers: [MoviesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,20 +1,28 @@
 import { createSelector } from '@ngrx/store'
-import { MoviesModel } from '../models/movies.model'
-import { AppState } from '../store/app.state'
+import { BatmanMoviesModel } from '@models/BatmanMovies.model'
+import { AppState } from '@store/app.state'
 
 export const moviesSelector = (state: AppState) => state.movies
 
-export const uniqueAlbumIds = createSelector(
+export const uniqueIMDBIDs = createSelector(
   moviesSelector,
-  (movies: MoviesModel[]) => [...new Set(movies.map((_) => _.albumId))]
+  (movies: BatmanMoviesModel[]) => [...new Set(movies.map((_) => _.Year))]
 )
 
-export const albumCollectionByAlbumId = (albumId: number) => createSelector(
+export const moviesCollectionByYear = (year: string | number) => createSelector(
     moviesSelector,
-    (movies:MoviesModel[]) => albumId == -1 ? movies : movies.filter(_ => _.albumId == albumId)
+    (movies:BatmanMoviesModel[]) => year == '' ?
+      movies :
+      movies.filter(_ => {
+        // There has to be a better way of filtering, this works although really ugly
+        const newYear = Number(_.Year.toString().substr(0, 4))
+        return Number(year) === 2000 ?
+          Number(_.Year) >= Number(year) || Number(newYear) >= Number(year) :
+          Number(_.Year) < 2000 || Number(newYear) < 2000
+      })
 )
 
-export const albumCollection = (albumId: number) => createSelector(
+export const albumCollection = (movies: string | number) => createSelector(
     moviesSelector,
-    (movies:MoviesModel[]) => movies
+    (movies:BatmanMoviesModel[]) => movies
 )

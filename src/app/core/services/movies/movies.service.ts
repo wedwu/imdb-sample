@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { map } from 'rxjs/operators'
-
+import { map, switchMap } from 'rxjs/operators'
+import { forkJoin, of } from 'rxjs';
 /**
- * todo:
- * todo:
- * todo:
- * todo:
+ * todo: retrievedMoviesList
+ * todo: `https://www.omdbapi.com/?s=Batman&apikey=e76b80ad`
+ * todo: `https://www.omdbapi.com/?i=tt3896198&apikey=e76b80ad`
  * todo:
  * todo:
  *
@@ -16,8 +15,36 @@ import { map } from 'rxjs/operators'
 export class MoviesService {
   constructor(private http: HttpClient) {}
 
+  // never would put an apikey here.
+  apikey = `e76b80ad`
+  baseURL = `https://www.omdbapi.com/?`
+  defaultSearch = `Batman`
+
+  apiSearch = `${this.baseURL}s=${this.defaultSearch}`
+  apiDetails = `${this.baseURL}i=`
+
   loadMovies = () =>
-    this.http
-      .get('https://jsonplaceholder.typicode.com/photos')
-      .pipe(map((albums) => albums || []))
+    this.http.get(`${this.apiSearch}&apikey=${this.apikey}`)
+      .pipe(
+      switchMap((movies: any) => {
+       if (movies.Search.length > 0) {
+         const results = movies.Search
+         return forkJoin(
+           results.map((movie: any) => {
+             return this.http.get(`${this.apiDetails}${movie.imdbID}&apikey=${this.apikey}`)
+              .pipe(
+                map((Details: any) => {
+                  movie.Rated = Details.Rated
+                  movie.Released = Details.Released
+                  movie.Runtime = Details.Runtime
+                  movie.Plot = Details.Plot
+                  return movie
+               })
+             )
+           })
+         );
+       }
+       return of([])
+     })
+   )
 }

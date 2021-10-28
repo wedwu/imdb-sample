@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store'
-import { MoviesModel } from '../models/movies.model'
-import { retrievedMoviesList } from '../actions/movies.action'
+import { BatmanMoviesModel } from '@models/BatmanMovies.model'
+import { retrievedMoviesList } from '@actions/movies.action'
 
-export const initialState: ReadonlyArray<MoviesModel> = []
+export const initialState: ReadonlyArray<BatmanMoviesModel> = []
 
 const _moviesReducer = createReducer(
   initialState,

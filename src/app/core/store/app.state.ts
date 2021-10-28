@@ -1,5 +1,5 @@
-import { MoviesModel } from '../models/movies.model'
+import { BatmanMoviesModel } from '@models/BatmanMovies.model'
 
 export interface AppState {
-  movies: MoviesModel[]
+  movies: BatmanMoviesModel[]
 }

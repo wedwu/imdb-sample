@@ -26,6 +26,9 @@
       "@app/*": [
         "src/app/*"
       ],
+      "@environments/*": [
+        "src/environments/*"
+      ],
       "@core/*": [
         "src/app/core/*"
       ],
@@ -44,8 +47,14 @@
       "@interfaces/*": [
         "src/app/core/interfaces/*"
       ],
+      "@store/*": [
+        "src/app/core/store/*"
+      ],
       "@models/*": [
         "src/app/core/models/*"
+      ],
+      "@actions/*": [
+        "src/app/core/actions/*"
       ],
       "@shared/*": [
         "src/app/shared/*"

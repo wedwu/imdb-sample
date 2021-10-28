@@ -1,5 +1,5 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing'
-import { LoadingSpinnerComponent } from './loading-spinner.component'
+import { MovieContainerComponent } from './movie-container.component'
 
 /**
  * todo:
@@ -11,19 +11,19 @@ import { LoadingSpinnerComponent } from './loading-spinner.component'
  *
  **/
 
-describe('LoadingSpinnerComponent', () => {
-  let component: LoadingSpinnerComponent
-  let fixture: ComponentFixture<LoadingSpinnerComponent>
+describe('MovieContainerComponent', () => {
+  let component: MovieContainerComponent
+  let fixture: ComponentFixture<MovieContainerComponent>
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoadingSpinnerComponent ]
+      declarations: [ MovieContainerComponent ]
     })
     .compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoadingSpinnerComponent)
+    fixture = TestBed.createComponent(MovieContainerComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

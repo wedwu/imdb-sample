@@ -4,6 +4,16 @@ import { map, mergeMap } from 'rxjs/operators'
 
 import { MoviesService } from '@services/movies/movies.service'
 
+/**
+ * todo: This was using a mergeMap() instead of forkJoin()
+ * todo: This is not in use.
+ * todo:
+ * todo:
+ * todo:
+ * todo:
+ *
+ **/
+
 @Injectable()
 export class MoviesEffect {
   constructor(
@@ -17,7 +27,10 @@ export class MoviesEffect {
       mergeMap(() =>
         this.moviesService
           .loadMovies()
-          .pipe(map((data) => ({ type: '[Movies API] Movies API Success', allMovies: data })))
+          .pipe(map((data) => ({
+            type: '[Movies API] Movies API Success',
+            allMovies: data
+          })))
       )
     )
   );

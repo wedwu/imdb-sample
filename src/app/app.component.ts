@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, HostBinding } from '@angular/core'
-import { Router, RouterOutlet } from '@angular/router'
+import { RouterOutlet } from '@angular/router'
 import { trigger, transition, animate, style, query, group, animateChild } from '@angular/animations'
 
 import { getLCP, getFID, getCLS } from 'web-vitals'
 
-import PHOTOS from '@shared/misc/photos'
+import POSTERS from '@shared/misc/posters'
 const MIN_PAGE_TIMEOUT = 2000
 const ELASTIC_BEZIER = 'cubic-bezier(.26,1.96,.58,.61)'
 
@@ -62,7 +62,7 @@ const ELASTIC_BEZIER = 'cubic-bezier(.26,1.96,.58,.61)'
 export class AppComponent {
   @HostBinding('@.disabled') animationsDisabled = false
 
-  // this will be true once all the photos are preloaded
+  // this will be true once all the posterss are preloaded
   public title: string = 'imdb-version-1'
   public ready: boolean = false
   public page: any
@@ -73,17 +73,15 @@ export class AppComponent {
   public defaultModeValue: string = 'light'
   public darkModeSelected: string = ''
 
-  constructor(
-    private _cd: ChangeDetectorRef,
-    private _router: Router
-  ) {}
+  constructor(private _cd: ChangeDetectorRef) {}
 
   ngOnInit() {
+    // testing
     getCLS(console.log)
     getFID(console.log)
     getLCP(console.log)
 
-    this.preloadPhotos(() => {
+    this.preloadPosters(() => {
       this._preloaded = true
       this.percentage = 100
       this._onReady()
@@ -96,36 +94,29 @@ export class AppComponent {
       this._onReady()
     }, MIN_PAGE_TIMEOUT)
   }
-
   private _onReady() {
     if (this._preloaded && this._timeoutDone) {
       this.ready = true
       this._cd.detectChanges()
     }
   }
-
-  preloadPhotos(onDoneCb: () => any, onProgressCb: (doneCount: number, totalCount: number) => any) {
-    let count: number = 0
-    let done: boolean = false
+  preloadPosters(onDoneCb: () => any, onProgressCb: (doneCount: number, totalCount: number) => any) {
+      let count: number = 0,
+          done: boolean = false
     const body = document.body
-    PHOTOS.forEach(photo => {
+    POSTERS.forEach(poster => {
       const img = new Image()
       img.onload = onImageDone
-      img.src = photo.src
+      img.src = poster.src
     })
-
     function onImageDone() {
-      if (!done && ++count >= PHOTOS.length) {
-        done = true
-        console.log(`PHOTOS DONE => ${JSON.stringify(PHOTOS)}`) // <= remove
-        onDoneCb()
+      if (!done && ++count >= POSTERS.length) {
+        done = true, onDoneCb()
       } else {
-        console.log(`count => ${count}`) // <= remove
-        onProgressCb(count, PHOTOS.length)
+        onProgressCb(count, POSTERS.length)
       }
     }
   }
-
   disableAnimations = () => this.animationsDisabled = true
   enableAnimations = () => this.animationsDisabled = false
   toggleAnimations = () => this.animationsDisabled ? this.enableAnimations() : this.disableAnimations()

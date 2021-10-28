@@ -1,7 +1,5 @@
+import {BatmanMoviesModel} from '@models/BatmanMovies.model'
+
 export interface MoviesModel {
-  albumId: number
-  id: number
-  title: string
-  url: string
-  thumbnailUrl: string
+  Search: BatmanMoviesModel[]
 }

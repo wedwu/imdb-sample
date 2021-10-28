@@ -1,11 +1,14 @@
 import { OnInit, Component, HostBinding } from '@angular/core'
 import { trigger, transition, useAnimation } from '@angular/animations'
-import { PAGE_IN_ANIMATION, PAGE_OUT_ANIMATION } from '../shared/shared_route_animations'
+import { PAGE_IN_ANIMATION, PAGE_OUT_ANIMATION } from '@shared/shared_route_animations'
 import { Store, select } from '@ngrx/store'
-// import { MoviesService } from '../core/services/movies.service'
-import { /*retrievedMoviesList,*/ invokeMoviesAPI } from '../core/actions/movies.action'
-import { uniqueAlbumIds, albumCollection, albumCollectionByAlbumId } from '../core/selectors/movies.selector'
-import { MoviesModel } from '../core/models/movies.model'
+import { MoviesService } from '@core/services/movies/movies.service'
+import { retrievedMoviesList } from '@core/actions/movies.action'
+import { uniqueIMDBIDs, moviesCollectionByYear } from '@core/selectors/movies.selector'
+import { BatmanMoviesModel } from '@models/BatmanMovies.model'
+
+declare let window: any
+declare var $: any
 
 /**
  * todo:
@@ -31,22 +34,35 @@ import { MoviesModel } from '../core/models/movies.model'
 export class MoviesComponent implements OnInit {
   @HostBinding('@pageAnimations') animatePage = true
 
-  selectedAlbumId = -1
-  albumIds$ = this.store.pipe(select(uniqueAlbumIds))
+  selectedYear = ''
+  IMDBIDs$ = this.store.pipe(select(uniqueIMDBIDs))
   allMovies$ = this.store.pipe(
-    select(albumCollectionByAlbumId(this.selectedAlbumId))
+    select(moviesCollectionByYear(this.selectedYear))
   )
   constructor(
-    private store: Store<{ movies: MoviesModel[] }>,
-    // private moviesService: MoviesService
+    private store: Store<{ movies: BatmanMoviesModel[] }>,
+    private moviesService: MoviesService
   ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(invokeMoviesAPI())
-    // another way to call the endpoint
-    // this.moviesService.loadMovies().subscribe((movies) => this.store.dispatch(retrievedMoviesList({ allMovies: movies as MoviesModel[] })))
+    this.moviesService.loadMovies().subscribe((movies: any) => {
+      this.store.dispatch(
+        retrievedMoviesList({
+          allMovies: movies as BatmanMoviesModel[]
+        })
+      )
+    })
   }
-  albumChange(event: number) {
-    this.allMovies$ = this.store.pipe(select(albumCollectionByAlbumId(event)))
+  onClick = (imdbID: string) => {
+    // I would handle this differently, however, for this example, it suits its purpose
+    window.location.href = `https://www.imdb.com/title/${imdbID}/`
+  }
+
+  movieChange(ev: any, event: string) {
+    // since I am not using a bootstrap type framework, I created this in jQuery, which was already referenced within the original 'index.html'
+    $('button').removeClass('active')
+    $(ev.currentTarget).addClass('active')
+    // This just filters the collection
+    this.allMovies$ = this.store.pipe(select(moviesCollectionByYear(event)))
   }
 }
