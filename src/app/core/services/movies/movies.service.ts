@@ -34,7 +34,9 @@ export class MoviesService {
         // emitting values only from the most recently projected Observable.
         switchMap((movies: any) => {
           // todo:: remove if statement and replace with iif().
-          if (movies.Search.length > 0) return movies.Search.filter((movie: any | any[]) => movie.Year)
+          if (movies.Search.length > 0) {
+            return movies.Search.filter((movie: any | any[]) => movie.Year)
+          }
           // If no results, it will return an empty array.
           return of([])
         }),
@@ -42,7 +44,7 @@ export class MoviesService {
         catchError(() => of([]))
    )
 
-// filter on ngxjs
+   // filter on ngxjs
   loadMovieDetails = () =>
     // Makes the initial call of the search endpoint
     this.http.get(`${this.apiSearch}&apikey=${this.apikey}`)
