@@ -26,7 +26,7 @@ export class MoviesService {
   loadMovies = () =>
     this.http.get(`${this.apiSearch}&apikey=${this.apikey}`)
       .pipe(switchMap((movies: any) => {
-       if (movies.Search.length > 0) return movies.Search
+       if (movies.Search.length > 0) movies.Search.filter((year: any | any[]) => year.Year)
        return of([])
      })
    )
@@ -37,6 +37,7 @@ export class MoviesService {
         switchMap((movies: any) => {
          if (movies.Search.length > 0) {
            const results = movies.Search
+           results.sort((a: any, b: any) => Number(a.Year.toString().substr(0, 4)) - Number(b.Year.toString().substr(0, 4)))
            return forkJoin(
              results.map((movie: any) => {
                return this.http.get(`${this.apiDetails}${movie.imdbID}&apikey=${this.apikey}`)
