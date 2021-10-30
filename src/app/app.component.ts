@@ -31,9 +31,6 @@ export class AppComponent {
   private _preloaded: boolean = false
   private _timeoutDone: boolean = false
   public percentage: number = 0
-  public isDark: boolean = true
-  public defaultModeValue: string = 'light'
-  public darkModeSelected: string = ''
 
   constructor(private _cd: ChangeDetectorRef) {}
 

@@ -5,17 +5,16 @@ import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { BrowserModule } from '@angular/platform-browser'
-import { EffectsModule } from '@ngrx/effects'
 import { StoreModule } from '@ngrx/store'
 import { ROUTES } from './routes'
 // Pages/Effects
 import { AppComponent } from './app.component'
 import { environment } from '../environments/environment'
 import { MoviesComponent } from './movies/movies.component'
-import { MoviesEffect } from './movies/movies.effect'
 // @Services
 import { MoviesService } from '@services/movies/movies.service'
 // @Shared
+import { FooterComponent } from '@shared/components/footer/footer.component'
 import { MovieYearsComponent } from '@shared/components/movie-years/movie-years.component'
 import { MovieContainerComponent } from '@shared/components/movie-container/movie-container.component'
 import { NavigationComponent } from '@shared/components/navigation/navigation.component'
@@ -25,6 +24,7 @@ import { moviesReducer } from '@reducers/movies.reducer'
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
     MoviesComponent,
     MovieYearsComponent,
     MovieContainerComponent,
@@ -32,7 +32,6 @@ import { moviesReducer } from '@reducers/movies.reducer'
   ],
   imports: [
     BrowserModule,
-    EffectsModule.forRoot([MoviesEffect]),
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
