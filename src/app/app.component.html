@@ -1,12 +1,20 @@
 <header>
-  <app-navigation role="navigation" aria-label="Main Navigation">app-navigation</app-navigation>
+  <app-navigation role="navigation" aria-label="Main Navigation">[app-navigation]</app-navigation>
 </header>
+
 <progress role="progress" class="loading-stage" *ngIf="!ready; else loaded;">
   <span role="progressbar" class="loading-spinner"></span>
 </progress>
+
 <ng-template #loaded>
   <main class="content" role="main">
-      <router-outlet [value]="outlet" aria-label="This is the Page Layout" #outlet="outlet"></router-outlet>
+    <router-outlet
+      [value]="outlet"
+      aria-label="This is the Page Layout"
+      #outlet="outlet">
+        [router-outlet]
+    </router-outlet>
   </main>
 </ng-template>
-<app-footer class="clouds">app-footer</app-footer>
+
+<app-footer class="clouds">[app-footer]</app-footer>

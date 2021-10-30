@@ -1,5 +1,5 @@
 export default [
-  // first 10 photos for advanced
+  // first 10 photos for advanced loading and if these are blocked
   {title: 'Batman & Robin', src: "/assets/posters/MV5BMGQ5YTM1NmMtYmIxYy00N2VmLWJhZTYtN2EwYTY3MWFhOTczXkEyXkFqcGdeQXVyNTA2NTI0MTY@._V1_SX300.jpg", tags: ["batman", "robin", "ivy", "mr freeze"]},
   {title: 'The Lego Batman Movie', src: "/assets/posters/MV5BMTcyNTEyOTY0M15BMl5BanBnXkFtZTgwOTAyNzU3MDI@._V1_SX300.jpg", tags: ["batman", "batwomen", "robin", "cartoon", "lego"]},
   {title: 'Batman Returns', src: "/assets/posters/MV5BMTYwNjAyODIyMF5BMl5BanBnXkFtZTYwNDMwMDk2._V1_SX300.jpg", tags: ["batman", "returns", "penguin", "catwomen"]},

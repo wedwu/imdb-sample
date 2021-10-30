@@ -59,7 +59,8 @@ export class AppComponent {
       this._cd.detectChanges()
     }
   }
-  preloadPosters(onDoneCb: () => any, onProgressCb: (doneCount: number, totalCount: number) => any) {
+  preloadPosters(onDoneCb: () => any,
+    onProgressCb: (doneCount: number, totalCount: number) => any) {
       let count: number = 0,
           done: boolean = false
     const body = document.body
