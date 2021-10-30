@@ -1,0 +1,112 @@
+
+
+@import '../../../../assets/styles/theme/_colors'
+@import '../../../../assets/styles/abstracts/_variables'
+
+article
+  color: $blackColor
+  margin: 0 auto
+  width: 696px
+  
+  .row
+    margin: 0 auto
+    width: 696px
+
+  .card
+    border-radius: $borderRadius8
+    border-color: $blackColor
+    border-width: 2px
+    background: $greyColor
+    width: 696px
+    height: 240px
+    padding: 15px
+    margin: 0 0 20px 0
+    display: flex
+    flex-wrap: wrap
+    flex-flow: column wrap
+
+    &:first-child
+      margin-top: 20px
+
+  .grid
+    width: 18rem
+
+  .image
+    width: 140px
+    height: 208px
+    border-radius: $borderRadius8
+    overflow: hidden
+    margin-right: 15px
+
+    .img
+      width: 140px
+
+  .content
+    width: 531px
+    height: auto
+    display: flex
+    margin-right: 20px
+    flex-wrap: wrap
+    flex-flow: column wrap
+
+    h1
+      font-size: 24px
+      font-size: 1.5em
+      line-height: 1.2
+      width: 96%
+      font-weight: bolder
+      border-bottom: solid 3px #a7a7a7
+
+    .caption
+      font-size: 14px
+      display: flex
+      flex-flow: column wrap
+      flex-direction: row
+      flex-wrap: nowrap
+      justify-content: space-between
+      align-items: center
+      width: 100%
+      padding-top: 0
+
+      span.Rated
+        border-radius: $borderRadius8
+        border: solid 2px #a7a7a7
+        background: $greyColor
+        font-family: monospace
+        padding: 0
+        margin-right: 20px
+        width: 17%
+        text-align: center
+        -moz-transform: scale(.9999)
+        transform: scale(.9999)
+
+      .p
+        width: 100%
+        color: $blackColor
+
+        &:first-child
+          width: 40%
+
+        &:last-child
+          width: 30%
+          justify-content: flex-end
+
+    p
+      font-size: 1em
+      width: 96%
+
+    .button
+      border-radius: 5px
+      border: none
+      background: $buttonColorPrimary
+      line-height: 2.5
+      width: 25%
+      color: $whiteColor
+      font-weight: bolder
+      position: absolute
+      bottom: 15px
+      right: 15px
+      transition: background-color 1s ease-out 10ms
+
+      &:hover
+          background: $buttonColorHoverPrimary

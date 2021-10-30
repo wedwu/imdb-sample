@@ -1,0 +1,79 @@
+// _spinner.sass
+
+@import '../theme/_colors'
+
+.transition-stage
+  z-index: 100000
+  text-align: center
+  top: 45%
+  left: 45%
+  position: absolute
+  background: rgba(0,0,0,0.95)
+
+  &:after, &:before
+    width: 80px
+    height: 80px
+    position: absolute
+    top: 0
+    left: 0
+    content: ''
+  &:before
+    animation: rotate 4s linear infinite
+    content: ' '
+    background-size: 80px 80px
+    background-repeat: no-repeat
+    background-image: url('../../svg/mickey-blue.svg')
+  &:after
+    animation: rotate 1.5s linear infinite reverse
+    content: ' '
+    background-size: 80px 80px
+    background-repeat: no-repeat
+    background-image: url('../../svg/mickey-red.svg')
+
+.loading-stage
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: rgba(0,0,0,0.95)
+  z-index: 100000
+
+  .text
+    position: absolute
+    padding-left: 100px
+    top: 50%
+    left: 50%
+    transform: translateX(-50%) translateY(-50%)
+    font-size: 50px
+    line-height: 80px
+
+    &:after, &:before
+      width: 80px
+      height: 80px
+      position: absolute
+      top: 0
+      left: 0
+      content: ''
+
+    &:before
+      animation: rotate 4s linear infinite
+      // background:$blueColor
+      content: ' '
+      background-size: 80px 80px
+      background-repeat: no-repeat
+      background-image: url('../../svg/mickey-blue.svg')
+
+    &:after
+      // background:$redColor
+      animation: rotate 1.5s linear infinite reverse
+      content: ' '
+      background-size: 80px 80px
+      background-repeat: no-repeat
+      background-image: url('../../svg/mickey-red.svg')
+
+.loading-spinner
+  text-align: center
+  top: 44%
+  left: 37%
+  position: absolute

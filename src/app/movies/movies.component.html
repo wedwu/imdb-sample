@@ -1,0 +1,34 @@
+<article class="container">
+  <app-movie-years
+    *ngIf="fetchInfoLoaded"
+    [decadeYears]="years$"
+    (doDecadeChange)="onDecadeYearChange($event)">
+      [app-movie-years]
+  </app-movie-years>
+
+  <app-movie-container
+    *ngIf="fetchMovieInfoLoaded"
+    [allMovies]=allMovies$
+    (doClickChange)="goToIMDB($event)">
+      [app-movie-container]
+  </app-movie-container>
+  <!-- <article class="row">
+    <article role="grid" *ngFor="let item of allMovies$ | async" class="card m-12">
+      <div class="image">
+        <img role="img" width="140" height="208" src="{{item.Poster}}" class="img" alt="Title of Movie {{item.Title}} & IMDB Id is {{item.imdbID}}">
+      </div>
+      <div role="content" class="content">
+        <h1 role="heading">{{item.Title}}</h1>
+        <caption class="caption">
+          <span class="Rated">
+            {{item.Rated}}
+          </span>
+          <span class="p">{{item.Runtime}}</span>
+          <span class="p">{{item.Released}}</span>
+        </caption>
+        <p>{{item.Plot}}</p>
+        <button class="button" name="button" (click)="onClick(item.imdbID)">View on IMDB</button>
+      </div>
+    </article>
+  </article> -->
+</article>
