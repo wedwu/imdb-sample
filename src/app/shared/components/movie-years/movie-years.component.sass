@@ -1,0 +1,57 @@
+
+@import '../../../../assets/styles/theme/_colors'
+@import '../../../../assets/styles/abstracts/_variables'
+
+article
+  color: $blackColor
+  margin: 0 auto
+  width: 696px
+
+  &.justify-content-right
+    justify-content: right !important
+    text-align: right
+
+  .button-group
+    border-radius: 5px
+    border: 0
+    overflow: hidden
+    width: 100%
+    margin-right: -15px !important
+
+    .button
+      border-radius: 5px
+      border: 1px solid $greyAlt1Color
+      background: $ltGreyColor
+      line-height: 2.5
+      width: 20%
+      color: $greyAlt2Color
+      font-weight: bolder
+      transition: background-color 1s ease-out 10ms
+
+      &:nth-child(2),
+      &:nth-child(3)
+        border-radius: 0
+        border-right: 0
+
+      &:first-child
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+        border-right: 0
+
+      &:last-child
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+      &.active
+        border: 1px solid $greyAlt1Color
+        background: $blueColor
+        color: $greyColor
+
+      &:hover
+        border: 1px solid $greyAlt1Color
+        background: $blueColor
+        color: $greyColor
+
+  .row
+    margin: 0 auto
+    width: 696px

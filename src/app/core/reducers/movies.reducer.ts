@@ -4,8 +4,7 @@ import { retrievedMoviesList } from '@actions/movies.action'
 
 export const initialState: ReadonlyArray<BatmanMoviesModel> = []
 
-const _moviesReducer = createReducer(
-  initialState,
+const _moviesReducer = createReducer(initialState,
   on(retrievedMoviesList, (state, { allMovies }) => [...allMovies]))
 
 export function moviesReducer(state: any, action: any) {

@@ -1,0 +1,10 @@
+<article role="form" class="row justify-content-right">
+  <div class="button-group">
+    <button
+      class="button"
+      *ngFor="let item of decadeYears | async"
+      (click)="movieChange($event, item)"
+    >{{item}}'s
+    </button>
+  </div>
+</article>

@@ -61,7 +61,10 @@
       ],
       "@fonts/*": [
         "src/assets/fonts/*"
-      ]
+      ],      
+      "@styles/*": [
+        "src/assets/styles/*"
+      ],
     }
   },
   "angularCompilerOptions": {

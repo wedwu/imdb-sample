@@ -1,7 +1,7 @@
 <header>
   <app-navigation role="navigation" aria-label="Main Navigation"></app-navigation>
 </header>
-<progress role="progress" class="loading-stage" @loadingAnimation *ngIf="!ready; else loaded;">
+<progress role="progress" class="loading-stage" *ngIf="!ready; else loaded;">
   <span role="progressbar" class="loading-spinner"></span>
 </progress>
 <ng-template #loaded>

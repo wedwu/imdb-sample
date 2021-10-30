@@ -1,10 +1,13 @@
 import { OnInit, Component, HostBinding } from '@angular/core'
-import { trigger, transition, useAnimation } from '@angular/animations'
 import { Store, select } from '@ngrx/store'
 import { MoviesService } from '@core/services/movies/movies.service'
 import { retrievedMoviesList } from '@core/actions/movies.action'
-import { uniqueIMDBIDs, moviesCollectionByYear } from '@core/selectors/movies.selector'
+import {
+  uniqueYears,
+  moviesCollectionByYear
+} from '@core/selectors/movies.selector'
 import { BatmanMoviesModel } from '@models/BatmanMovies.model'
+import { MoviesReleasedModel } from '@models/MoviesReleasedModel.model'
 
 declare let window: any
 declare var $: any
@@ -26,34 +29,49 @@ declare var $: any
   animations: []
 })
 export class MoviesComponent implements OnInit {
-  selectedYear = ''
-  IMDBIDs$ = this.store.pipe(select(uniqueIMDBIDs))
-  allMovies$ = this.store.pipe(
-    select(moviesCollectionByYear(this.selectedYear))
-  )
+  public selectedYear: string = ''
+  public fetchInfoLoaded: boolean = false
+  public fetchMovieInfoLoaded: boolean = false
+  // uniqueYears = uniqueYears.sort((a, b) => a - b)
+  // console.log(`uniqueYears => ${uniqueYears}`)
+  public years$ = this.store.pipe(select(uniqueYears))
+  public allMovies$ = this.store.pipe(select(moviesCollectionByYear(this.selectedYear)))
+
   constructor(
-    private store: Store<{ movies: BatmanMoviesModel[] }>,
+    private store: Store<{ movies: BatmanMoviesModel[], released: MoviesReleasedModel[] }>,
     private moviesService: MoviesService
   ) {}
 
   ngOnInit(): void {
+    this.fetchInfo()
+  }
+
+  fetchInfo = () => {
+    this.moviesService.loadMovieDetails().subscribe((movies: any) => {
+      this.store.dispatch(
+        retrievedMoviesList({
+          allMovies: movies as BatmanMoviesModel[]
+        })
+      )
+      this.fetchMovieInfoLoaded = true
+    })
     this.moviesService.loadMovies().subscribe((movies: any) => {
       this.store.dispatch(
         retrievedMoviesList({
           allMovies: movies as BatmanMoviesModel[]
         })
       )
+      this.fetchInfoLoaded = true
     })
   }
-  onClick = (imdbID: string) => {
+
+  goToIMDB(imdbID: any) {
     // I would handle this differently, however, for this example, it suits its purpose
     window.location.href = `https://www.imdb.com/title/${imdbID}/`
   }
 
-  movieChange(ev: any, event: string) {
-    // since I am not using a bootstrap type framework, I created this in jQuery, which was already referenced within the original 'index.html'
-    $('button').removeClass('active')
-    $(ev.currentTarget).addClass('active')
+  onDecadeYearChange(event: any) {
+    console.log(`event => ${event}`)
     // This just filters the collection
     this.allMovies$ = this.store.pipe(select(moviesCollectionByYear(event)))
   }

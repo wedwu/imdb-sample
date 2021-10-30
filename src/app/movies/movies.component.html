@@ -1,12 +1,18 @@
 <article class="container">
-  <article role="form" class="row justify-content-right">
-    <div class="button-group">
-      <button class="button" (click)="movieChange($event, '2000')">2000's</button>
-      <button class="button" (click)="movieChange($event, '1990')">1990's</button>
-    </div>
+  <app-movie-years
+    *ngIf="fetchInfoLoaded"
+    [decadeYears]="years$"
+    (doDecadeChange)="onDecadeYearChange($event)">
+      [app-movie-years]
+  </app-movie-years>
 
-  </article>
-  <article class="row">
+  <app-movie-container
+    *ngIf="fetchMovieInfoLoaded"
+    [allMovies]=allMovies$
+    (doClickChange)="goToIMDB($event)">
+      [app-movie-container]
+  </app-movie-container>
+  <!-- <article class="row">
     <article role="grid" *ngFor="let item of allMovies$ | async" class="card m-12">
       <div class="image">
         <img role="img" width="140" height="208" src="{{item.Poster}}" class="img" alt="Title of Movie {{item.Title}} & IMDB Id is {{item.imdbID}}">
@@ -24,5 +30,5 @@
         <button class="button" name="button" (click)="onClick(item.imdbID)">View on IMDB</button>
       </div>
     </article>
-  </article>
+  </article> -->
 </article>

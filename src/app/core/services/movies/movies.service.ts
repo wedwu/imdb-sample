@@ -47,4 +47,29 @@ export class MoviesService {
        return of([])
      })
    )
+
+  loadMovieDetails = () =>
+    this.http.get(`${this.apiSearch}&apikey=${this.apikey}`)
+      .pipe(
+      switchMap((movies: any) => {
+       if (movies.Search.length > 0) {
+         const results = movies.Search
+         return forkJoin(
+           results.map((movie: any) => {
+             return this.http.get(`${this.apiDetails}${movie.imdbID}&apikey=${this.apikey}`)
+              .pipe(
+                map((Details: any) => {
+                  movie.Rated = Details.Rated
+                  movie.Released = Details.Released
+                  movie.Runtime = Details.Runtime
+                  movie.Plot = Details.Plot
+                  return movie
+               })
+             )
+           })
+         );
+       }
+       return of([])
+     })
+   )
 }

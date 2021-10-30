@@ -16,6 +16,8 @@ import { MoviesEffect } from './movies/movies.effect'
 // @Services
 import { MoviesService } from '@services/movies/movies.service'
 // @Shared
+import { MovieYearsComponent } from '@shared/components/movie-years/movie-years.component'
+import { MovieContainerComponent } from '@shared/components/movie-container/movie-container.component'
 import { NavigationComponent } from '@shared/components/navigation/navigation.component'
 // @Reducer
 import { moviesReducer } from '@reducers/movies.reducer'
@@ -24,6 +26,8 @@ import { moviesReducer } from '@reducers/movies.reducer'
   declarations: [
     AppComponent,
     MoviesComponent,
+    MovieYearsComponent,
+    MovieContainerComponent,
     NavigationComponent
   ],
   imports: [

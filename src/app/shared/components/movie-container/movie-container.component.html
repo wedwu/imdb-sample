@@ -1,21 +1,21 @@
-<section role="grid" *ngFor="let item of allMovies$ | async" class="card m-12">
-  <div class="image">
-    <img role="img" width="140" height="208" src="{{item.Poster}}" class="img" alt="Title linked to this image is {{item.Title}} & The IMDB Id is {{item.imdbID}}">
-  </div>
-  <details role="details" class="content">
-    <h1 role="heading">{{item.Title}}</h1>
-    <caption class="caption">
-      <span class="Rated">
-        {{item.Details.Rated}}
-      </span>
-      <span class="p">{{item.Details.Runtime}}</span>
-      <span class="p">{{item.Details.Released}}</span>
-    </caption>
-    <summary>
+<article class="row justify-content-right">
+  <section role="grid" *ngFor="let item of allMovies | async" class="card m-12">
+    <div class="image">
+      <img role="img" width="140" height="208" src="{{item.Poster}}" class="img" alt="Title linked to this image is {{item.Title}} & The IMDB Id is {{item.imdbID}}">
+    </div>
+    <section class="content">
+      <h1 role="heading">{{item.Title}}</h1>
+      <caption class="caption">
+        <span class="Rated">
+          {{item.Rated}}
+        </span>
+        <span class="p">{{item.Runtime}}</span>
+        <span class="p">{{item.Released}}</span>
+      </caption>
       <p role="summary">
-        {{item.Details.Plot}}
+        {{item.Plot}}
       </p>
-    </summary>
-    <button class="button" name="button" alt="View on IMDB's Website" (click)="onClick(item.imdbID)">View on IMDB</button>
-  </details>
-</section>
+      <button class="button" name="button" alt="View on IMDB's Website" (click)="onClick(item.imdbID)">View on IMDB</button>
+    </section>
+  </section>
+</article>

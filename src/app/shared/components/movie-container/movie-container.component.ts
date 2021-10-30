@@ -1,4 +1,4 @@
-import { OnInit, Component } from '@angular/core'
+import { Component, Input, Output, OnInit, EventEmitter, ViewChild } from '@angular/core'
 
 /**
  * todo:
@@ -18,6 +18,24 @@ import { OnInit, Component } from '@angular/core'
 })
 export class MovieContainerComponent implements OnInit {
 
-  constructor() {}
-  ngOnInit(): void {}
+  @Input() allMovies: any
+  @Output() doClickChange = new EventEmitter<any>()
+
+  public infoFetched: boolean = true
+  public allMovie: any | any[]
+
+  constructor() {
+
+  }
+  ngOnInit(): void {
+    console.log(`allMovies => ${this.allMovies}`)
+
+    // this.allMovie = this.allMovies.actionsObserver._value.allMovies
+    this.infoFetched = true
+  }
+  onClick = (imdbID: string) => {
+    console.log(`imdbID => ${imdbID}`)
+    this.doClickChange.emit(imdbID)
+  }
+
 }
