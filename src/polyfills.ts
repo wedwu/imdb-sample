@@ -21,7 +21,7 @@
 /**
  * IE11 requires the following for NgClass support on SVG elements
  */
-// import 'classlist.js';  // Run `npm install --save classlist.js`.
+import 'classlist.js';  // Run `npm install --save classlist.js`.
 
 /**
  * Web Animations `@angular/platform-browser/animations`
@@ -63,24 +63,3 @@ import 'zone.js'  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-
- // import {Logger, Level} from 'ts-debugger'
- // import {environment} from './environments/environment'
-
- // declare let log: Logger
- // declare let window: any
-
- // if (environment.production) {
-     // Production
-     // window.log = new Logger(Level.INFO)
- // } else {
-     // Development
-     // window.log = new Logger()
-     // Error["stackTraceLimit"] = Infinity
- // }
-
- // log.debug(
- //     `Level debug: ${log["levelMin"]}`,
- //     `Is Production? = ${environment.production}`
- //     //, `THEME = ${THEME}`
- // )()

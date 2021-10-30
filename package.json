@@ -23,6 +23,7 @@
     "@ngrx/effects": "^12.2.0",
     "@ngrx/store": "^12.2.0",
     "bootstrap": "^5.0.2",
+    "classlist.js": "^1.1.20150312",
     "jquery": "^3.6.0",
     "lodash": "~4.3.0",
     "moment": "^2.29.1",
