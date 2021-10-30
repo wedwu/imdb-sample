@@ -25,25 +25,8 @@ export class MoviesService {
 
   loadMovies = () =>
     this.http.get(`${this.apiSearch}&apikey=${this.apikey}`)
-      .pipe(
-      switchMap((movies: any) => {
-       if (movies.Search.length > 0) {
-         const results = movies.Search
-         return forkJoin(
-           results.map((movie: any) => {
-             return this.http.get(`${this.apiDetails}${movie.imdbID}&apikey=${this.apikey}`)
-              .pipe(
-                map((Details: any) => {
-                  movie.Rated = Details.Rated
-                  movie.Released = Details.Released
-                  movie.Runtime = Details.Runtime
-                  movie.Plot = Details.Plot
-                  return movie
-               })
-             )
-           })
-         );
-       }
+      .pipe(switchMap((movies: any) => {
+       if (movies.Search.length > 0) return movies.Search
        return of([])
      })
    )
@@ -51,25 +34,25 @@ export class MoviesService {
   loadMovieDetails = () =>
     this.http.get(`${this.apiSearch}&apikey=${this.apikey}`)
       .pipe(
-      switchMap((movies: any) => {
-       if (movies.Search.length > 0) {
-         const results = movies.Search
-         return forkJoin(
-           results.map((movie: any) => {
-             return this.http.get(`${this.apiDetails}${movie.imdbID}&apikey=${this.apikey}`)
-              .pipe(
-                map((Details: any) => {
-                  movie.Rated = Details.Rated
-                  movie.Released = Details.Released
-                  movie.Runtime = Details.Runtime
-                  movie.Plot = Details.Plot
-                  return movie
-               })
-             )
-           })
-         );
-       }
-       return of([])
-     })
-   )
-}
+        switchMap((movies: any) => {
+         if (movies.Search.length > 0) {
+           const results = movies.Search
+           return forkJoin(
+             results.map((movie: any) => {
+               return this.http.get(`${this.apiDetails}${movie.imdbID}&apikey=${this.apikey}`)
+                .pipe(
+                  map((Details: any) => {
+                    movie.Rated = Details.Rated
+                    movie.Released = Details.Released
+                    movie.Runtime = Details.Runtime
+                    movie.Plot = Details.Plot
+                    return movie
+                 })
+               )
+             })
+           );
+         }
+         return of([])
+       })
+     )
+   }

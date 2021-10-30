@@ -8,7 +8,6 @@ import {
 } from '@core/selectors/movies.selector'
 import { BatmanMoviesModel } from '@models/BatmanMovies.model'
 import { BatmanMovieDetails } from '@models/BatmanMovieDetails.model'
-import { MoviesReleasedModel } from '@models/MoviesReleasedModel.model'
 
 declare let window: any
 declare var $: any
@@ -39,7 +38,6 @@ export class MoviesComponent implements OnInit {
   constructor(
     private store: Store<{
       movies: BatmanMoviesModel[],
-      released: MoviesReleasedModel[],
       details: BatmanMovieDetails[]
     }>,
     private moviesService: MoviesService
@@ -59,15 +57,6 @@ export class MoviesComponent implements OnInit {
             })
           )
           this.fetchMovieInfoLoaded = true
-        })
-    this.moviesService
-      .loadMovies()
-        .subscribe((movies: any) => {
-          this.store.dispatch(
-            retrievedMoviesList({
-              allMovies: movies as BatmanMoviesModel[]
-            })
-          )
           this.fetchInfoLoaded = true
         })
   }
