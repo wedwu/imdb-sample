@@ -17,5 +17,5 @@ describe('MoviesService', () => {
   it('should be created', () => {
     const service: MoviesService = TestBed.get(MoviesService)
     expect(service).toBeTruthy()
-  });
-});
+  })
+})

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { catchError, map, switchMap } from 'rxjs/operators'
-import { forkJoin, iif, of } from 'rxjs';
+import { forkJoin, iif, of } from 'rxjs'
 /**
  * todo: retrievedMoviesList
  * todo: `https://www.omdbapi.com/?s=Batman&apikey=e76b80ad`
@@ -54,7 +54,7 @@ export class MoviesService {
         // emitting values only from the most recently projected Observable.
         switchMap((movies: any) => {
           // Checks a boolean at subscription time, and chooses between one of two observable sources
-          // const firstOrSecond = iif(() => movies, of(movies.Search));
+          // const firstOrSecond = iif(() => movies, of(movies.Search))
           // console.log(`firstOrSecond => ${firstOrSecond}`)
           // todo:: remove if statement and replace with iif().
           if(movies.Search.length > 0) {

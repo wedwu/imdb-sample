@@ -11,4 +11,4 @@ export default [
   {title: 'Batman Begins', src: "/assets/posters/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg", tags: ["batman", "Begins"]},
   {title: 'Batman v Superman: Dawn of Justice', src: "/assets/posters/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg", tags: ["batman", "Superman", "Dawn", "Justice"]}
 
-];
+]
