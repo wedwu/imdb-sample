@@ -7,7 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker'
 import { BrowserModule } from '@angular/platform-browser'
 import { StoreModule } from '@ngrx/store'
 import { ROUTES } from './routes'
-// Pages/Effects
+// Pages
 import { AppComponent } from './app.component'
 import { environment } from '../environments/environment'
 import { MoviesComponent } from './movies/movies.component'
