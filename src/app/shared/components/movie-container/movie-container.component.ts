@@ -13,29 +13,23 @@ import { Component, Input, Output, OnInit, EventEmitter, ViewChild } from '@angu
 @Component({
   selector: 'app-movie-container',
   templateUrl: './movie-container.component.html',
-  styleUrls: ['./movie-container.component.sass'],
-  animations: []
+  styleUrls: ['./movie-container.component.sass']
 })
 export class MovieContainerComponent implements OnInit {
-
+  // Pulls in the data to populate the navigation
   @Input() allMovies: any
+  // The even listener that bubbles up what value was selected
   @Output() doClickChange = new EventEmitter<any>()
 
   public infoFetched: boolean = true
   public allMovie: any | any[]
 
-  constructor() {
-
-  }
+  constructor() {}
   ngOnInit(): void {
-    console.log(`allMovies => ${this.allMovies}`)
-
+    console.log(`MovieContainerComponent Loaded`)
     // this.allMovie = this.allMovies.actionsObserver._value.allMovies
+    // just a flag if needed
     this.infoFetched = true
   }
-  onClick = (imdbID: string) => {
-    console.log(`imdbID => ${imdbID}`)
-    this.doClickChange.emit(imdbID)
-  }
-
+  onClick = (imdbID: string) => this.doClickChange.emit(imdbID)
 }

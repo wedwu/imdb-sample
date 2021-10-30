@@ -15,16 +15,18 @@ import { Component, Input, Output, OnInit, EventEmitter, ViewChild } from '@angu
 @Component({
   selector: 'app-movie-years',
   templateUrl: './movie-years.component.html',
-  styleUrls: ['./movie-years.component.sass'],
-  animations: []
+  styleUrls: ['./movie-years.component.sass']
 })
 export class MovieYearsComponent implements OnInit {
-
+  // Pulls in the data to populate the navigation
   @Input() decadeYears: any
+  // The even listener that bubbles up what value was selected
   @Output() doDecadeChange = new EventEmitter<any>()
 
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(`FooterComponent Loaded`)
+  }
   movieChange(ev: any, event: any) {
     // since I am not using a bootstrap type framework, I created this in jQuery,
     // which was already referenced within the original 'index.html'
