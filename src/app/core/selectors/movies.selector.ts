@@ -1,5 +1,6 @@
 import { createSelector } from '@ngrx/store'
 import { BatmanMoviesModel } from '@models/BatmanMovies.model'
+import { BatmanMovieDetails } from '@models/BatmanMovieDetails.model'
 import { AppState } from '@store/app.state'
 
 export const moviesSelector = (state: AppState) => state.movies
@@ -19,22 +20,24 @@ const decadePicker = (year: number | string) => {
   return 1980
 }
 
-export const moviesCollectionByYear = (year: string | number) => createSelector(moviesSelector,
-  (movies:BatmanMoviesModel[]) => year == '' ?
-    movies :
-    movies.filter(_ => {
-      // There has to be a better way of filtering, this works although really ugly
-      const checkYear = Number(_.Year.toString().substr(0, 4))
-      return Number(year) === 2000 ?
-        checkYear >= 2000 && checkYear <= 2009 :
-          Number(year) === 2010 ?
-            checkYear >= 2010 && checkYear <= 2019 :
-              Number(year) === 2020 ?
-                checkYear >= 2020 && checkYear <= 2029 :
-                  Number(year) === 1990 ?
-                    checkYear >= 1990 && checkYear <= 1999 :
-                    checkYear <= 1989
-    })
+export const moviesCollectionByYear = (year: string | number) =>
+  createSelector(moviesSelector,
+    (movies: BatmanMovieDetails[]) => year == '' ?
+      movies:
+      movies.filter(_ => {
+        // There has to be a better way of filtering,
+        // this works although really ugly
+        const checkYear = Number(_.Year.toString().substr(0, 4))
+        return Number(year) === 2000 ?
+          checkYear >= 2000 && checkYear <= 2009 :
+            Number(year) === 2010 ?
+              checkYear >= 2010 && checkYear <= 2019 :
+                Number(year) === 2020 ?
+                  checkYear >= 2020 && checkYear <= 2029 :
+                    Number(year) === 1990 ?
+                      checkYear >= 1990 && checkYear <= 1999 :
+                      checkYear <= 1989
+      })
 )
 
 export const albumCollection =

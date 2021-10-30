@@ -7,6 +7,7 @@ import {
   moviesCollectionByYear
 } from '@core/selectors/movies.selector'
 import { BatmanMoviesModel } from '@models/BatmanMovies.model'
+import { BatmanMovieDetails } from '@models/BatmanMovieDetails.model'
 import { MoviesReleasedModel } from '@models/MoviesReleasedModel.model'
 
 declare let window: any
@@ -32,13 +33,15 @@ export class MoviesComponent implements OnInit {
   public selectedYear: string = ''
   public fetchInfoLoaded: boolean = false
   public fetchMovieInfoLoaded: boolean = false
-  // uniqueYears = uniqueYears.sort((a, b) => a - b)
-  // console.log(`uniqueYears => ${uniqueYears}`)
   public years$ = this.store.pipe(select(uniqueYears))
   public allMovies$ = this.store.pipe(select(moviesCollectionByYear(this.selectedYear)))
 
   constructor(
-    private store: Store<{ movies: BatmanMoviesModel[], released: MoviesReleasedModel[] }>,
+    private store: Store<{
+      movies: BatmanMoviesModel[],
+      released: MoviesReleasedModel[],
+      details: BatmanMovieDetails[]
+    }>,
     private moviesService: MoviesService
   ) {}
 
@@ -47,22 +50,26 @@ export class MoviesComponent implements OnInit {
   }
 
   fetchInfo = () => {
-    this.moviesService.loadMovieDetails().subscribe((movies: any) => {
-      this.store.dispatch(
-        retrievedMoviesList({
-          allMovies: movies as BatmanMoviesModel[]
+    this.moviesService
+      .loadMovieDetails()
+        .subscribe((details: any) => {
+          this.store.dispatch(
+            retrievedMoviesList({
+              allMovies: details as BatmanMoviesModel[]
+            })
+          )
+          this.fetchMovieInfoLoaded = true
         })
-      )
-      this.fetchMovieInfoLoaded = true
-    })
-    this.moviesService.loadMovies().subscribe((movies: any) => {
-      this.store.dispatch(
-        retrievedMoviesList({
-          allMovies: movies as BatmanMoviesModel[]
+    this.moviesService
+      .loadMovies()
+        .subscribe((movies: any) => {
+          this.store.dispatch(
+            retrievedMoviesList({
+              allMovies: movies as BatmanMoviesModel[]
+            })
+          )
+          this.fetchInfoLoaded = true
         })
-      )
-      this.fetchInfoLoaded = true
-    })
   }
 
   goToIMDB(imdbID: any) {
