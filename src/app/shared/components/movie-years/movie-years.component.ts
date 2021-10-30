@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter, ViewChild } from '@angular/core'
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core'
 
 /**
  * todo: missing the release date that has a hythen
@@ -9,7 +9,7 @@ import { Component, Input, Output, OnInit, EventEmitter, ViewChild } from '@angu
  * todo:
  *
  **/
- declare let window: any
+ // declare let window: any
  declare var $: any
 
 @Component({

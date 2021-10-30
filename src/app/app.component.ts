@@ -25,7 +25,7 @@ const MIN_PAGE_TIMEOUT = 2000
 export class AppComponent {
 
   // this will be true once all the posterss are preloaded
-  public title: string = 'imdb-version-1'
+  public title: string = 'imdb-coding-challenge'
   public ready: boolean = false
   public page: any
   private _preloaded: boolean = false

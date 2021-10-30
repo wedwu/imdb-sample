@@ -1,4 +1,4 @@
-import { OnInit, Component, HostBinding } from '@angular/core'
+import { OnInit, Component } from '@angular/core'
 import { Store, select } from '@ngrx/store'
 import { MoviesService } from '@core/services/movies/movies.service'
 import { retrievedMoviesList } from '@core/actions/movies.action'
@@ -7,7 +7,7 @@ import {
   moviesCollectionByYear
 } from '@core/selectors/movies.selector'
 import { BatmanMoviesModel } from '@models/BatmanMovies.model'
-import { BatmanMovieDetails } from '@models/BatmanMovieDetails.model'
+// import { BatmanMovieDetails } from '@models/BatmanMovieDetails.model'
 
 declare let window: any
 declare var $: any
@@ -83,7 +83,7 @@ export class MoviesComponent implements OnInit {
   }
 
   onDecadeYearChange(event: any) {
-    console.log(`event => ${event}`)
+    // console.log(`event => ${event}`)
     // This just filters the collection
     this.allMovies$ = this.store.pipe(select(moviesCollectionByYear(event)))
   }
