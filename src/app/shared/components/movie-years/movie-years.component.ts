@@ -25,7 +25,7 @@ export class MovieYearsComponent implements OnInit {
 
   constructor() {}
   ngOnInit(): void {
-    console.log(`FooterComponent Loaded`)
+    console.log(`MovieYearsComponent Loaded`)
   }
   movieChange(ev: any, event: any) {
     // since I am not using a bootstrap type framework, I created this in jQuery,

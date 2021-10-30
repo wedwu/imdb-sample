@@ -52,8 +52,8 @@ export class MoviesService {
         // emitting values only from the most recently projected Observable.
         switchMap((movies: any) => {
           // Checks a boolean at subscription time, and chooses between one of two observable sources
-          const firstOrSecond = iif(() => movies, of(movies.Search));
-          console.log(`firstOrSecond => ${firstOrSecond}`)
+          // const firstOrSecond = iif(() => movies, of(movies.Search));
+          // console.log(`firstOrSecond => ${firstOrSecond}`)
           // todo:: remove if statement and replace with iif().
           if(movies.Search.length > 0) {
             // Simplfies movie results to a top tier object
